@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.ui.components
+package com.example.myapplication.presentation.ui.home
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -20,13 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.domain.model.HourlyWeather
 import com.example.myapplication.presentation.constants.StringConstants
-import com.example.myapplication.domain.model.WeatherType
 import com.example.myapplication.presentation.ui.utils.animated
 import com.example.myapplication.presentation.ui.utils.getIconRes
 
 
 @Composable
-fun HourlyForecastCard (modifier:Modifier){
+fun HourlyForecastCard (modifier:Modifier, hourlyWeatherData: List<HourlyWeather>?){
     Surface(
         modifier,
         color = MaterialTheme.colors.surface.animated(),
@@ -39,7 +38,9 @@ fun HourlyForecastCard (modifier:Modifier){
                 modifier.horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(30.dp)
             ){
-
+                hourlyWeatherData?.forEach {
+                    HourlyForecastItem(data = it)
+                }
                 /*TODO: из ViewModel потребуется достать данные и отобразить здесь*/
                 /*sampleHourlyData.forEach {
                     HourlyForecastItem(it)

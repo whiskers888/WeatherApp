@@ -7,7 +7,7 @@ import com.example.myapplication.domain.repository.WeatherRepository
 import java.util.Date
 
 class WeatherRepositoryImpl: WeatherRepository {
-    override suspend fun fetchCurrentWeather(time: Date): CurrentlyWeather {
+    override suspend fun fetchCurrentWeather(): CurrentlyWeather {
         return WeatherDataSource.fetchCurrentWeather()
     }
 

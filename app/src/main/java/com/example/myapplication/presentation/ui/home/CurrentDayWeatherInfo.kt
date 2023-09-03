@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.ui.components
+package com.example.myapplication.presentation.ui.home
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.Spring
@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.domain.model.CurrentlyWeather
 import com.example.myapplication.presentation.constants.StringConstants
 import com.example.myapplication.domain.model.WeatherType
 import com.example.myapplication.presentation.ui.utils.getDescriptionRes
@@ -26,7 +27,7 @@ import com.example.myapplication.presentation.ui.utils.getIconRes
 @Composable
 fun CurrentDayWeatherInfo (
     modifier:Modifier,
-    currentDayWeatherInfo: WeatherType
+    currentDayWeatherInfo: CurrentlyWeather
 ){
     Column(
         modifier.padding(20.dp),
@@ -44,12 +45,12 @@ fun CurrentDayWeatherInfo (
             ){
                 Icon(
                     modifier = Modifier.size(200.dp),
-                    painter = painterResource(it.getIconRes()),
+                    painter = painterResource(it.weatherType.getIconRes()),
                     contentDescription = StringConstants.CURRENTWEATHER,
                     tint = Color.White,
                 )
                 Text(
-                    text = it.getDescriptionRes(),
+                    text = it.weatherType.getDescriptionRes(),
                     color = Color.White,
                     style = MaterialTheme.typography.h6.copy(fontWeight = FontWeight.Bold)
                 )

@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.ui.components
+package com.example.myapplication.presentation.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,7 +26,7 @@ import com.example.myapplication.domain.model.WeatherType
 import com.example.myapplication.presentation.ui.utils.animated
 
 @Composable
-fun DailyForecastCard (modifier: Modifier) {
+fun DailyForecastCard (modifier: Modifier, weeklyWeatherData: List<DailyWeather>?) {
     Surface(
         modifier,
         color = MaterialTheme.colors.surface.animated(),
@@ -37,10 +37,9 @@ fun DailyForecastCard (modifier: Modifier) {
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ){
             Text(text = "Прогноз на неделю", fontWeight = FontWeight.Medium)
-            /*TODO: из ViewModel потребуется достать данные и отобразить здесь*/
-            /*fakeSampleDailyForecastData.forEach {
-                DailyForecastItem(modifier.fillMaxWidth(), it)
-            }*/
+            weeklyWeatherData?.forEach {
+                DailyForecastItem(modifier = modifier.fillMaxWidth(), data = it)
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<WeatherViewModel>()
+    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MyApplication)
@@ -28,7 +28,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme() {
                 ProvideWindowInsets {
-
                     BarsTheming(window)
                     MyApp(viewModel)
                 }
@@ -39,7 +38,7 @@ class MainActivity : ComponentActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp(viewModel: WeatherViewModel) {
+fun MyApp(viewModel: HomeViewModel) {
     Surface(color = MaterialTheme.colors.background) {
         WeatherScreen(viewModel = viewModel)
     }

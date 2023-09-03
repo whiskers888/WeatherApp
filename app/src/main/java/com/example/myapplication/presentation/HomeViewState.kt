@@ -7,7 +7,7 @@ import com.example.myapplication.domain.model.DailyWeather
 
 data class HomeViewState(
     val currentWeather: CurrentlyWeather = CurrentlyWeather.getDefault(),
-    val hourlyWeather: Result<List<HourlyWeather>> = Result.Loading,
-    val weekWeather: Result<List<DailyWeather>> = Result.Loading,
-    val refreshing: Boolean = false
+    val hourlyWeather: Result<List<HourlyWeather>> = Result.Error(Throwable()),
+    val weeklyWeather: Result<List<DailyWeather>> = Result.Error(Throwable()),
+    val isRefreshing: Boolean = false
 )

@@ -7,9 +7,10 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import  com.example.myapplication.domain.base.Result
+import com.example.myapplication.domain.dispatchers.IoDispatcher
 import com.example.myapplication.domain.model.CurrentlyWeather
 
-class FetchCurrentWeather(private val repository: WeatherRepository, dispatcher: CoroutineDispatcher) : FlowUseCase<Unit, CurrentlyWeather>(
+class FetchCurrentWeather(private val repository: WeatherRepository, @IoDispatcher dispatcher: CoroutineDispatcher) : FlowUseCase<Unit, CurrentlyWeather>(
     dispatcher
 ) {
     override fun execute(parameters: Unit): Flow<Result<CurrentlyWeather>> {
