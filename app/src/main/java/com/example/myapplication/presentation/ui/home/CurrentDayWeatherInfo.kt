@@ -20,7 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.domain.model.CurrentlyWeather
 import com.example.myapplication.presentation.constants.StringConstants
-import com.example.myapplication.domain.model.WeatherType
 import com.example.myapplication.presentation.ui.utils.getDescriptionRes
 import com.example.myapplication.presentation.ui.utils.getIconRes
 

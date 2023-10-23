@@ -1,8 +1,8 @@
 package com.example.myapplication.presentation.ui.utils
 
 import com.example.myapplication.R
-import com.example.myapplication.domain.model.WeatherTypeConstants
 import com.example.myapplication.domain.model.WeatherType
+import com.example.myapplication.domain.model.WeatherTypeConstants
 
 
 fun WeatherType.getDescriptionRes(): String {

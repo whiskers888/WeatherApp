@@ -19,8 +19,6 @@ import com.example.myapplication.presentation.HomeViewModel
 import com.example.myapplication.presentation.ui.home.CurrentDayWeatherInfo
 import com.example.myapplication.presentation.ui.home.DailyForecastCard
 import com.example.myapplication.presentation.ui.home.HourlyForecastCard
-import com.example.myapplication.domain.base.Result
-import com.example.myapplication.domain.base.data
 import com.example.myapplication.presentation.ui.components.ErrorMessage
 import com.example.myapplication.presentation.ui.home.WeatherDetailsCard
 import com.fidloo.flux.presentation.ui.component.SectionProgressBar
@@ -28,6 +26,8 @@ import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.example.myapplication.domain.base.Result
+import com.example.myapplication.domain.base.data
 
 
 @Composable

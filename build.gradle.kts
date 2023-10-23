@@ -1,3 +1,6 @@
+buildscript {
+    val daggerVersion by extra(2.48)
+}
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 

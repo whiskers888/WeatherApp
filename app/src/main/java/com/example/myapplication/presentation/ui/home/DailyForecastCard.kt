@@ -21,8 +21,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.R
 import com.example.myapplication.domain.model.DailyWeather
-import com.example.myapplication.presentation.constants.StringConstants
 import com.example.myapplication.domain.model.WeatherType
+import com.example.myapplication.presentation.constants.StringConstants
 import com.example.myapplication.presentation.ui.utils.animated
 
 @Composable

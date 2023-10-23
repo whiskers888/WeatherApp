@@ -2,12 +2,12 @@ package com.example.myapplication.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.myapplication.data.WeatherRepositoryImpl
 import com.example.myapplication.domain.base.successOr
 import com.example.myapplication.domain.business.FetchCurrentWeather
 import com.example.myapplication.domain.business.FetchDailyWeather
 import com.example.myapplication.domain.business.FetchWeeklyWeather
 import com.example.myapplication.domain.model.CurrentlyWeather.Companion.getDefault
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -15,29 +15,24 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
-
-class HomeViewModel constructor(
-    private val fetchCurrentWeather: FetchCurrentWeather = FetchCurrentWeather(WeatherRepositoryImpl(), Dispatchers.IO),
-    private val fetchDailyWeather: FetchDailyWeather= FetchDailyWeather(WeatherRepositoryImpl(), Dispatchers.IO),
-    private val fetchWeekWeather: FetchWeeklyWeather= FetchWeeklyWeather(WeatherRepositoryImpl(), Dispatchers.IO),
-) : ViewModel(
-) {
+import javax.inject.Inject
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val fetchCurrentWeather: FetchCurrentWeather,
+    private val fetchDailyWeather: FetchDailyWeather,
+    private val fetchWeekWeather: FetchWeeklyWeather,
+) : ViewModel()  {
     private val _state =
         MutableStateFlow(HomeViewState())
     val state: StateFlow<HomeViewState> = _state
 
     private var job: Job? = null;
 
-    private val _particleAnimationIteration = MutableStateFlow(0L)
-    val particleAnimationIteration: StateFlow<Long> = _particleAnimationIteration
-
-
     init {
         loadData()
         viewModelScope.launch(Dispatchers.Default) {
             while (true) {
-                _particleAnimationIteration.value++
-                delay(10000L)
+                delay(100)
             }
         }
     }
@@ -52,7 +47,7 @@ class HomeViewModel constructor(
 
                 // Нужно предотвратить обновление с помощью свайпа, чтобы заменить успешное состояние индикатором выполнения
                 val newCurrentWeather = currentWeather.successOr(getDefault())
-
+                
                 val newHourlyWeather = if (hourlyWeather.isSuccessful()) {
                     hourlyWeather
                 } else {
